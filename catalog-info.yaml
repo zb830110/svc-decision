@@ -1,0 +1,17 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: svc-decision
+  description: Microservice for making data science decisions
+  annotations:
+    github.com/project-slug: activehours/svc-decision
+    pagerduty.com/integration-key: 6db750ab6da0440bd08ce97b51c46849
+  tags:
+    - python
+    - api
+    - k8s
+spec:
+  type: service
+  owner: "mle-team"
+  lifecycle: production
+  system: datascience

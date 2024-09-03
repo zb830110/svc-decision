@@ -1,0 +1,153 @@
+{
+  "bank": {
+    "transaction": {
+      "elasticsearch": {
+      "url": "https://vpc-bank-transactions-clone-uwpj6oz3fn6dnzifd6nr4zudvm.us-west-2.es.amazonaws.com/",
+      "transactionIndexPrefix": "bank-transactions",
+      "documentType": "BankTransaction",
+      "defaultSize": 20,
+      "interval": "year"
+      },
+      "api": {
+        "getTransactionsUri": "https://9bnfqra3q5.execute-api.us-west-2.amazonaws.com/Test/banktransactions",
+        "timeout": 60,
+        "defaultCount": 1000
+      }
+    },
+    "accountHistory": {
+        "tableName": "bank-account-balance-history-dev",
+        "indexName": "UserId-CreatedOn-index"
+    }
+  },
+
+  "database": {
+
+    "bankConnection": {
+      "secret": "rds/bankfeed/datascience",
+      "poolSize": 2
+    },
+
+    "miscellaneous": {
+      "secret": "rds/miscellaneous/datascience"
+    },
+
+    "datascience": {
+      "secret": "rds/datascience/dsappuser",
+      "schema": "datascience",
+      "poolSize": 2
+    },
+
+    "moneyMovement": {
+      "secret": "rds/moneymovement/datascience"
+    },
+
+    "cashout": {
+      "secret": "rds/cashout/svc_decision_ro"
+    },
+
+    "payroll": {
+      "secret": "rds/payroll/datascience"
+    },
+
+    "risk": {
+      "secret": "rds/risk/datascience"
+    },
+
+    "savings": {
+      "secret": "rds/savings/riskuser_ro"
+    },
+
+    "sqlserver": {
+      "secret": "rds/sqlserver/datascience",
+      "schema": "datascience"
+    }
+  },
+
+  "logging": {
+    "appenders": ["console"],
+    "layout": "{\"Level\":\"%(levelname)s\",\"Timestamp\":\"%(asctime)s\",\"Properties\":%(message)s}",
+    "extraAttributes": ["ContextId", "Event", "Ip", "AppName", "ServiceName", "UrlPath", "UserId"],
+    "level": "INFO",
+
+    "levels": {
+      "ah": "INFO",
+      "boto3": "ERROR",
+      "botocore": "ERROR",
+      "elasticsearch": "WARN",
+      "urllib3": "WARN",
+      "ah_db": "WARN",
+      "bank_transaction": "WARN",
+      "matplotlib": "INFO"
+    }
+  },
+
+  "security": {
+    "ng": {
+      "kmsRegion": "us-west-2",
+      "dataKeys": {
+        "Miscellaneous": "arn:aws:kms:us-west-2:429750608758:key/2fe3f89d-c8bc-4446-8a4c-9185ef2ecf7e",
+	    "DataScience": "arn:aws:kms:us-west-2:429750608758:key/05ffa78e-365f-4958-b314-dfa315ff269a"
+      },
+      "secrets": {
+        "Miscellaneous": "security/miscellaneous",
+	    "DataScience": "security/datascience"
+      }
+    }
+  },
+
+  "environment": {
+
+    "production": {
+      "bank": {
+      "transaction": {
+        "elasticsearch": {
+          "url":"https://vpc-bank-transactions-umviidhz3tqsy7hs4ozoebvvdu.us-west-2.es.amazonaws.com"
+        },
+          "api": {
+            "getTransactionsUri": "https://h79exj9f93.execute-api.us-west-2.amazonaws.com/Production/banktransactions"
+          }
+        },
+        "accountHistory": {
+          "tableName": "bank-account-balance-history-prod",
+          "indexName": "UserId-CreatedOn-index"
+        }
+      },
+      "security": {
+        "ng": {
+          "kmsRegion": "us-west-2",
+          "dataKeys": {
+            "Miscellaneous": "arn:aws:kms:us-west-2:171679608487:key/d63aaeb0-9f48-4d41-8fda-517384dd5fa4",
+            "DataScience": "arn:aws:kms:us-west-2:171679608487:key/4bdcb965-59bc-48cc-880b-843b090238e8"
+          },
+          "secrets": {
+            "Miscellaneous": "security/miscellaneous",
+            "DataScience": "security/datascience"
+          }
+        }
+      }
+    },
+
+    "stage": {
+      "bank": {
+        "transaction": {
+          "elasticsearch": {
+          "url": "https://vpc-bank-transactions-clone-uwpj6oz3fn6dnzifd6nr4zudvm.us-west-2.es.amazonaws.com/",
+          "transactionIndexPrefix": "bank-transactions",
+          "documentType": "BankTransaction",
+          "defaultSize": 20,
+          "interval": "year"
+          },
+          "api": {
+            "getTransactionsUri": "https://xoo1w18zfj.execute-api.us-west-2.amazonaws.com/Test/banktransactions",
+            "timeout": 60,
+            "defaultCount": 1000
+          }
+        },
+        "accountHistory": {
+            "tableName": "bank-account-balance-history-stage",
+            "indexName": "UserId-CreatedOn-index"
+        }
+      }
+    }
+  }
+}

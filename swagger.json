@@ -1,0 +1,489 @@
+{
+  "definitions": {
+    "HTTPValidationError": {
+      "properties": {
+        "detail": {
+          "items": {
+            "$ref": "#/definitions/ValidationError"
+          },
+          "title": "Detail",
+          "type": "array"
+        }
+      },
+      "title": "HTTPValidationError",
+      "type": "object"
+    },
+    "ValidationError": {
+      "properties": {
+        "loc": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Location",
+          "type": "array"
+        },
+        "msg": {
+          "title": "Message",
+          "type": "string"
+        },
+        "type": {
+          "title": "Error Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "loc",
+        "msg",
+        "type"
+      ],
+      "title": "ValidationError",
+      "type": "object"
+    }
+  },
+  "info": {
+    "title": "svc-decision",
+    "version": "0.1.0"
+  },
+  "paths": {
+    "/v0/check-chime-transfer/{user_id}": {
+      "get": {
+        "operationId": "GetCheckChimeTransfer",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "user_id",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "schema": {}
+          },
+          "422": {
+            "description": "Validation Error",
+            "schema": {
+              "$ref": "#/definitions/HTTPValidationError"
+            }
+          }
+        },
+        "summary": "Get Check Chime Transfer"
+      }
+    },
+    "/v0/competitor-max-decision": {
+      "get": {
+        "operationId": "GetCompetitorMaxDecision",
+        "parameters": [
+          {
+            "default": -1,
+            "in": "query",
+            "name": "userid",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "default": -1,
+            "in": "query",
+            "name": "max",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "schema": {}
+          },
+          "422": {
+            "description": "Validation Error",
+            "schema": {
+              "$ref": "#/definitions/HTTPValidationError"
+            }
+          }
+        },
+        "summary": "Get Competitor Max Decision"
+      }
+    },
+    "/v0/failed-restore-user-max/{user_id}": {
+      "get": {
+        "operationId": "GetFailedRestoreUserMax",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "user_id",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "schema": {}
+          },
+          "422": {
+            "description": "Validation Error",
+            "schema": {
+              "$ref": "#/definitions/HTTPValidationError"
+            }
+          }
+        },
+        "summary": "Get Failed Restore User Max"
+      }
+    },
+    "/v0/max-adjustment-act/{user_id}": {
+      "get": {
+        "operationId": "GetMaxAdjustmentAct",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "user_id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "activation_risk",
+            "required": true,
+            "type": "number"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "schema": {}
+          },
+          "422": {
+            "description": "Validation Error",
+            "schema": {
+              "$ref": "#/definitions/HTTPValidationError"
+            }
+          }
+        },
+        "summary": "Get Max Adjustment Act"
+      }
+    },
+    "/v0/max-adjustment/{user_id}": {
+      "get": {
+        "operationId": "GetMaxAdjustment",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "user_id",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "schema": {}
+          },
+          "422": {
+            "description": "Validation Error",
+            "schema": {
+              "$ref": "#/definitions/HTTPValidationError"
+            }
+          }
+        },
+        "summary": "Get Max Adjustment"
+      }
+    },
+    "/v0/new-user-max/{user_id}": {
+      "get": {
+        "operationId": "GetNewUserMax",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "user_id",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "schema": {}
+          },
+          "422": {
+            "description": "Validation Error",
+            "schema": {
+              "$ref": "#/definitions/HTTPValidationError"
+            }
+          }
+        },
+        "summary": "Get New User Max"
+      }
+    },
+    "/v0/express-future-max/{user_id}": {
+      "get": {
+        "operationId": "GetExpressFutureMax",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "user_id",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "schema": {}
+          },
+          "422": {
+            "description": "Validation Error",
+            "schema": {
+              "$ref": "#/definitions/HTTPValidationError"
+            }
+          }
+        },
+        "summary": "Get User Future Max"
+      }
+    },
+    "/v0/payroll-grace-period/{user_id}": {
+      "get": {
+        "operationId": "GetPayrollGracePeriod",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "user_id",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "schema": {}
+          },
+          "422": {
+            "description": "Validation Error",
+            "schema": {
+              "$ref": "#/definitions/HTTPValidationError"
+            }
+          }
+        },
+        "summary": "Get Payroll Grace Period"
+      }
+    },
+    "/v0/request-max-adjustment": {
+      "get": {
+        "operationId": "GetRequestMaxAdjustment",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "userid",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "desiredIncrease",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "desiredAdjustment",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "schema": {}
+          },
+          "422": {
+            "description": "Validation Error",
+            "schema": {
+              "$ref": "#/definitions/HTTPValidationError"
+            }
+          }
+        },
+        "summary": "Get Request Max Adjustment"
+      }
+    },
+    "/v0/restore-grace-period/{user_id}": {
+      "get": {
+        "operationId": "GetRestoreGracePeriod",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "user_id",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "schema": {}
+          },
+          "422": {
+            "description": "Validation Error",
+            "schema": {
+              "$ref": "#/definitions/HTTPValidationError"
+            }
+          }
+        },
+        "summary": "Get Restore Grace Period"
+      }
+    },
+    "/v0/same-day-ACH-restore/{user_id}": {
+      "get": {
+        "operationId": "GetSameDayACHRestore",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "user_id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "Date",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "schema": {}
+          },
+          "422": {
+            "description": "Validation Error",
+            "schema": {
+              "$ref": "#/definitions/HTTPValidationError"
+            }
+          }
+        },
+        "summary": "Get Same Day Ach Restore"
+      }
+    },
+    "/v0/savings-deposit-request-risk/{user_id}": {
+      "get": {
+        "operationId": "GetSavingsDepositRequestRisk",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "user_id",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "schema": {}
+          },
+          "422": {
+            "description": "Validation Error",
+            "schema": {
+              "$ref": "#/definitions/HTTPValidationError"
+            }
+          }
+        },
+        "summary": "Get Savings Deposit Request Risk"
+      }
+    },
+    "/v0/success-recovery-max-adjustment/{user_id}": {
+      "get": {
+        "operationId": "GetSuccessRecoveryMaxAdjustment",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "user_id",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "schema": {}
+          },
+          "422": {
+            "description": "Validation Error",
+            "schema": {
+              "$ref": "#/definitions/HTTPValidationError"
+            }
+          }
+        },
+        "summary": "Get Success Recovery Max Adjustment"
+      }
+    },
+    "/v0/unemployment-existing-user-check/{user_id}": {
+      "get": {
+        "operationId": "GetUnemploymentExistingUserCheck",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "user_id",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "schema": {}
+          },
+          "422": {
+            "description": "Validation Error",
+            "schema": {
+              "$ref": "#/definitions/HTTPValidationError"
+            }
+          }
+        },
+        "summary": "Get Unemployment Existing User Check"
+      }
+    }
+  },
+  "swagger": "2.0",
+  "x-components": {}
+}
